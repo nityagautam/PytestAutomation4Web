@@ -1,7 +1,28 @@
 openpyxl
 selenium
-nose
+webdriver_manager
 pytest
 pytest-html
-pytest-html-reporter
 urllib3
+allure-pytest
+requests
+pandas
+beautifulsoup4
+lxml
+numpy
+scipy
+# Additional libraries that might be useful
+# For web scraping and data manipulation
+# For data analysis and manipulation
+# For testing and reporting
+# For HTTP requests
+# For Excel file handling
+# For HTML parsing
+# For web automation
+# For testing
+# For HTML reporting
+# For testing and reporting
+# For HTML parsing
+# For data analysis
+# For data manipulation
+# For data analysis and manipulation

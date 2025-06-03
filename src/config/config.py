@@ -1,17 +1,96 @@
+"""
+@author: Ashutosh Mishra | ashutosh_mishra_@outlook.com
+@created: 1 Sep 2022
+@last_modified: 03 Jun 2025
+@desc: Config Class;
+    Contains all the configuration for this automation framework.
+"""
+
+
+import sys
 import os
-from src.utilities.Utility import Utility
+from src.utilities.utilities import Utilities as Utility
 from src.utilities.Logger import Logger
 
 
+
 # get the logger first
+# ===========================
 log = Logger().get_logger()
 
 
+# FRAMEWORK'S DEFAULT PARAMS
+# ===============================
+APP_URL = "https://www.wikipedia.org/"
+BROWSER = 'firefox'
+
+
+# SELENIUM / WAIT
+# ==================
+DEFAULT_WAIT = 5    # In seconds
+TIMEOUT = DEFAULT_WAIT
+
+
+# GENERAL
+# ==========
+AUTHOR_NAME = "Ashutosh Mishra"
+AUTHOR_EMAIL= "ashutosh_mishra_@outlook.com"
+OUT_DIR_NAME = 'out'
+SCREENSHOT_DIR_NAME = 'screenshots'
+SCREENSHOT_FILE_EXT = '.png'
+SCREENSHOT_LOCATION = os.path.join(sys.path[0], OUT_DIR_NAME, SCREENSHOT_DIR_NAME)
+LOG_DIR_NAME = 'logs'
+REPORT_DIR_NAME = 'reports'
+PERFORMANCE_RAW_REPORT_FILE_NAME = 'performance.json'
+PERFORMANCE_REPORT_FILE_NAME = 'performance.html'
+DATETIME_STAMP_PATTERN = "%d-%m-%Y_%I-%M-%S_%p"
+
+
+# REPORT
+# ========
+PYTEST_REPORT_TITLE = "ASHUTOSH MISHRA AUTOMATION REPORT"  
+PERFORMANCE_REPORT_TITLE = "Performance Report Title"
+PAGE_PERFORMANCE_DATA = []
+
+
+# LOG
+# ========
+AUTOMATION_LOG_FILE = 'automation-logs.log'
+AUTOMATION_LOG_FORMAT = "%(asctime)s:%(name)s:%(levelname)s::: %(message)s "
+AUTOMATION_LOG_DATE_FORMAT = f'{DATETIME_STAMP_PATTERN}'
+
+
+# DIRECTORY CREATION
+# ==========================
+# Crating 'out' dir
+if not os.path.exists(os.path.join(sys.path[0], OUT_DIR_NAME)):
+    log.debug(f"Creating '{OUT_DIR_NAME}' directory ...")
+    os.mkdir(os.path.join(sys.path[0], OUT_DIR_NAME))
+
+# Crating 'out/log' dir
+if not os.path.exists(os.path.join(sys.path[0], OUT_DIR_NAME, LOG_DIR_NAME)):
+    log.debug(f"Creating '{OUT_DIR_NAME}/{LOG_DIR_NAME}' directory ...")
+    os.mkdir(os.path.join(sys.path[0], OUT_DIR_NAME, LOG_DIR_NAME))
+
+# Crating 'out/reports' dir
+if not os.path.exists(os.path.join(sys.path[0], OUT_DIR_NAME, REPORT_DIR_NAME)):
+    log.debug(f"Creating '{OUT_DIR_NAME}/{REPORT_DIR_NAME}' directory ...")
+    os.mkdir(os.path.join(sys.path[0], OUT_DIR_NAME, REPORT_DIR_NAME))
+
+# Crating 'out/screenshots' dir
+if not os.path.exists(os.path.join(sys.path[0], OUT_DIR_NAME, SCREENSHOT_DIR_NAME)):
+    log.debug(f"Creating '{OUT_DIR_NAME}/{SCREENSHOT_DIR_NAME}' directory ...")
+    os.mkdir(os.path.join(sys.path[0], OUT_DIR_NAME, SCREENSHOT_DIR_NAME))
+
+
+# ==[DEPRICATED AREA BELOW]==
+
+
 # ===================================================================
-# Place all the common data
+# Old Config Class, which can load the test  config data from json file
 # related to the application and framework in this class
 # ===================================================================
-class Config:
+class OldConfig:
     # ------------------------------------------------------------
     # Default Configuration data for the application
     # ------------------------------------------------------------

@@ -1,17 +1,21 @@
-import time
-from src.utilities.basepage import BasePage
-from src.utilities.Logger import Logger
+"""
+@author: Ashutosh Mishra | ashutosh_mishra_@outlook.com
+@created: 1 Sep 2022
+@last_modified: 03 Jun 2025
+@desc: GoogleSearch Page Class;
+    Contains Page Object for the Google Search.
+"""
+
+from src.base.basepage import BasePage
 
 
 class GoogleSearchPage(BasePage):
-
-    log = Logger().get_logger()
-
     def __init__(self, driver):
         # Init and load from super/parent class
         super().__init__(driver)
         self.driver = driver
         # Since we have inherited the 'BasePage'
+        # - Logger will be attached to self.log
         # - All the methods from Selenium driver will be attached to self
         # - All the methods from the Utility class will be attached to self
         # - Locators from the 'locators.py' for 'LoginPage' will be attached to self
@@ -22,9 +26,7 @@ class GoogleSearchPage(BasePage):
         self.type(locator=self.SEARCH_BOX, value=keyword + "\n")
         # self.click(locator="xpath=//*[@name='btnK' and @type='submit']")
         self.click(locator=self.SEARCH_SUBMIT_BTN)
-        # Sleep time
-        time.sleep(5)
-
+        
     def extract_and_verify_for_results(self):
         self.log.debug(f"Initiating extraction of first element on the result page ...")
         # first_link = self.get_element_with_wait(locator="xpath=(//*[@id='rso']//a)[1]")
