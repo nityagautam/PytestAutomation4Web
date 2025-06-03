@@ -6,15 +6,13 @@ An automation framework using pytest, pytest-html
 ### Pre-Requisite:
 <pre>
     1. python3
-    2. Updated web drivers in (./resources/drivers/)
-    3. Consider adding driver location into system path
 </pre>
 
 ### Setup
 <pre>
     1. Clone the repo
         ~ git clone {this_repo_link}
-        ~ cd ./PytestAutomation
+        ~ cd ./PytestAutomation4Web
     2. Run the requirement (You can also create virtualenv first before installing modules)
         ~ pip install -r requirements.txt
 </pre>
@@ -25,12 +23,14 @@ An automation framework using pytest, pytest-html
 
 > python -m pytest <PATH_TO_TEST_FILE> {runs the specific test file}
 
+> pytest --browser=edge --url 'https://www.wikipedia.org/' -v -k test_wiki
+
 
 ### Results / Reports
 <pre>
     After an execution, We can find the test results in form of html/xml reports in 
-    - `out/test_result.xml`
-    - `out/test_report.xml`
+    - `out/test_result.xml`    <-- JUnit result xml file
+    - `out/test_report.html`
 
 Note: These location can be easily modified in `./pytest.ini`
 </pre>
@@ -43,15 +43,17 @@ Note: These location can be easily modified in `./pytest.ini`
                 |____ reports
                 |____ screenshots
                 |____ automation.log
-                |____ report.html
+                |____ test_report.html
                 |____ test_result.xml
 
         |____ resources
-                |____ drivers
                 |____ test_data
                         |____ test_data.json (Contains test data along with configuration values)
 
         |____ src
+                |____ base
+                        |____ basepage.py (Base class for PageObject classes)
+                        |____ basetest.py (Base class for Test classes)
                 |____ config
                         |____ config.py (Contains the configuration for entire framework)[HP]
                 |____ pages
@@ -59,21 +61,21 @@ Note: These location can be easily modified in `./pytest.ini`
                         |____ locators.py (Contains all the locators)[HP]
                         |____ locators.json (Contains all the locators)[LP]
                 |____ tests
-                        |____ sanity
+                        |____ samples
                         |____ etc
                 |____ utilities
-                        |____ basepage.py (Base class for PageObject classes)
-                        |____ basetest.py (Base class for Test classes)
+                        |____ 
+                        |____ 
                         |____ Logger (Custom Logger)
                         |____ SD.py (SeleniumDriver)
-                        |____ Utility.py (Common Utility)
+                        |____ Utilities.py (Common Utility)
                         |____ WDF.py (WebDriverFactory)
                 |____ __init__.py
-                |____ conftest.py (Contains pytest common fixtures)
 
+        |____ conftest.py (Contains pytest common fixtures)
+        |____ LICENSE
         |____ pytest.ini (Contains pytest configuration)
         |____ README.md
-        |____ LICENSE
         |____ requirements.txt (Python lib/modules requirements)
 
 :>
@@ -89,14 +91,14 @@ LP = Low presidency
 ### Adding New Page Object class
 <pre>
 You can add new page object classes under the `src/pages/`
-which inherits the `BasePage` class from `src/utilities/basepage.py` 
+which inherits the `BasePage` class from `src/base/basepage.py` 
 </pre>
 
 
 ### Adding New Test class
 <pre>
 You can add new Test classes under the `src/tests/`
-which inherits the `BaseTest` class from `src/utilities/basetest.py` 
+which inherits the `BaseTest` class from `src/base/basetest.py` 
 [
 consider under an suite like `src/tests/{suite_name}/{Test_file}`; 
 Example: `src/tests/sanity/test_one.py`
