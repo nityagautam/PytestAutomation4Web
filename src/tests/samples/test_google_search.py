@@ -12,7 +12,7 @@
 import pytest
 import sys
 import allure
-from src.utilities.basetest import BaseTest
+from src.base.basetest import BaseTest
 from src.pages.samples.google_search_page import GoogleSearchPage
 
 
