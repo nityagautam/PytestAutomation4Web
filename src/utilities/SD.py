@@ -494,7 +494,7 @@ class SeleniumDriver:
     def get_element_offset(self, jquery_locator, timeout=config.TIMEOUT, index=0):
         by = self.get_locator_and_strategy(jquery_locator)
 
-        if by is not 'jquery':
+        if by != 'jquery':
             raise Exception('Must be jquery locator')
 
         locator = jquery_locator[jquery_locator.find("=") + 1:]
@@ -512,7 +512,7 @@ class SeleniumDriver:
     def get_element_width(self, jquery_locator, timeout=config.TIMEOUT):
         by = self.get_locator_and_strategy(jquery_locator)
 
-        if by is not 'jquery':
+        if by != 'jquery':
             raise Exception('Must be jquery locator')
 
         locator = jquery_locator[jquery_locator.find("=") + 1:]
@@ -529,7 +529,7 @@ class SeleniumDriver:
     def get_element_height(self, jquery_locator, timeout=config.TIMEOUT, index=0):
         by = self.get_locator_and_strategy(jquery_locator)
 
-        if by is not 'jquery':
+        if by != 'jquery':
             raise Exception('Must be jquery locator')
 
         locator = jquery_locator[jquery_locator.find("=") + 1:]
